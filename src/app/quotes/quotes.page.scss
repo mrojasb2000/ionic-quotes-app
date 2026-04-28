@@ -11,8 +11,9 @@
 
 .home-toolbar-inner {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	gap: 12px;
 	padding: 4px 8px;
 }
@@ -22,11 +23,13 @@
 	font-weight: 800;
 	letter-spacing: 0.02em;
 	color: #f8fafc;
+	text-align: center;
 }
 
 .home-nav {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 8px;
 	background: rgba(255, 255, 255, 0.16);
 	border: 1px solid rgba(255, 255, 255, 0.22);
