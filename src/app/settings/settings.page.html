@@ -1,0 +1,55 @@
+<ion-header translucent="true">
+  <ion-toolbar class="home-toolbar">
+    <div class="home-toolbar-inner">
+      <div class="home-brand">Cita del dia</div>
+
+      <nav class="home-nav" aria-label="Navegacion principal">
+        <a
+          class="home-nav-link"
+          routerLink="/"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Inicio
+        </a>
+        <a
+          class="home-nav-link"
+          routerLink="/quotes"
+          routerLinkActive="is-active">
+          Citas
+        </a>
+        <a
+          class="home-nav-link"
+          routerLink="/settings"
+          routerLinkActive="is-active">
+          Configuracion
+        </a>
+      </nav>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <div class="settings-wrapper">
+
+    <ion-card class="settings-card">
+      <ion-card-content>
+        <div class="settings-section-title">Preferencias</div>
+        <div class="quote-divider"></div>
+
+        <ion-item lines="none" class="settings-item">
+          <div class="settings-item-info">
+            <p class="settings-item-label">Permitir eliminar en inicio</p>
+            <p class="settings-item-desc">Muestra el botón para borrar la cita del día</p>
+          </div>
+          <ion-toggle
+            slot="end"
+            [checked]="allowDelete"
+            (ionChange)="toggle($event)">
+          </ion-toggle>
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

@@ -1,4 +1,4 @@
-.quote-content {
+.settings-content {
   --background: #ffffff;
 }
 
@@ -72,51 +72,33 @@
   }
 }
 
-.quote-wrapper {
+.settings-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100%;
   padding: 24px 16px;
   box-sizing: border-box;
 }
 
-.quote-card {
+.settings-card {
   width: 100%;
   max-width: 540px;
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(172, 171, 171, 0.12);
-  margin: 0 0 20px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  margin: 0;
 
   ion-card-content {
-    padding: 32px 28px 28px;
-    text-align: center;
+    padding: 28px 24px 20px;
   }
 }
 
-.quote-mark {
-  font-size: 64px;
-  line-height: 0.6;
+.settings-section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--ion-color-primary);
-  font-family: Georgia, serif;
-  opacity: 0.35;
-  display: block;
-  margin-bottom: 8px;
-
-  &--close {
-    text-align: right;
-    margin-top: 4px;
-    margin-bottom: 0;
-  }
-}
-
-.quote-text {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  font-style: italic;
-  color: var(--ion-text-color);
-  margin: 8px 0;
+  margin-bottom: 12px;
 }
 
 .quote-divider {
@@ -124,43 +106,30 @@
   height: 3px;
   background: var(--ion-color-primary);
   border-radius: 2px;
-  margin: 20px auto 16px;
+  margin: 0 0 20px 0;
   opacity: 0.6;
 }
 
-.quote-author {
-  font-size: 0.95rem;
+.settings-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --background: transparent;
+}
+
+.settings-item-info {
+  flex: 1;
+  padding-right: 12px;
+}
+
+.settings-item-label {
+  font-size: 1rem;
   font-weight: 600;
+  color: var(--ion-text-color);
+  margin: 0 0 4px;
+}
+
+.settings-item-desc {
+  font-size: 0.85rem;
   color: var(--ion-color-medium);
-  letter-spacing: 0.04em;
   margin: 0;
-}
-
-.delete-btn {
-  width: 100%;
-  max-width: 540px;
-  --border-radius: 12px;
-}
-
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  gap: 16px;
-  color: var(--ion-color-medium);
-}
-
-.empty-icon {
-  font-size: 72px;
-  opacity: 0.4;
-}
-
-.empty-text {
-  font-size: 1.1rem;
-  opacity: 0.6;
-  color: #000;
-  font-size: larger;
-  font-weight: 600;
 }

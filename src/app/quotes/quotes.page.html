@@ -1,0 +1,107 @@
+<ion-header translucent="true">
+  <ion-toolbar class="home-toolbar">
+    <div class="home-toolbar-inner">
+      <div class="home-brand">Cita del dia</div>
+
+      <nav class="home-nav" aria-label="Navegacion principal">
+        <a
+          class="home-nav-link"
+          routerLink="/"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Inicio
+        </a>
+        <a
+          class="home-nav-link"
+          routerLink="/quotes"
+          routerLinkActive="is-active">
+          Citas
+        </a>
+        <a
+          class="home-nav-link"
+          routerLink="/settings"
+          routerLinkActive="is-active">
+          Configuracion
+        </a>
+      </nav>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="quotes-content">
+  <div class="quotes-wrapper">
+
+    <ion-card class="quotes-card">
+      <ion-card-content>
+        <div class="settings-section-title">Nueva cita</div>
+        <div class="quote-divider"></div>
+
+        <form [formGroup]="form" novalidate (ngSubmit)="add()">
+          <ion-input
+            class="quotes-input"
+            fill="outline"
+            formControlName="text"
+            labelPlacement="floating"
+            label="Frase">
+          </ion-input>
+          @if (form.controls['text'].errors?.['minlength']) {
+            <p class="field-error">Mínimo 5 caracteres</p>
+          }
+
+          <ion-input
+            class="quotes-input"
+            fill="outline"
+            formControlName="author"
+            labelPlacement="floating"
+            label="Autor">
+          </ion-input>
+          @if (form.controls['author'].errors?.['minlength']) {
+            <p class="field-error">Mínimo 2 caracteres</p>
+          }
+
+          <ion-button
+            class="add-btn"
+            type="submit"
+            expand="block"
+            [disabled]="form.invalid">
+            Agregar cita
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    @if (quotes.length > 0) {
+      <ion-card class="quotes-card">
+        <ion-card-content class="list-card-content">
+          <div class="settings-section-title">Citas guardadas</div>
+          <div class="quote-divider"></div>
+
+          <ion-list lines="none" class="quotes-list">
+            @for (q of quotes; track q.id ?? $index) {
+              <ion-item class="quote-item">
+                <div class="quote-item-body">
+                  <p class="quote-item-text">&ldquo;{{q.text}}&rdquo;</p>
+                  <p class="quote-item-author">&mdash; {{q.author}}</p>
+                </div>
+                <ion-button
+                  slot="end"
+                  fill="clear"
+                  color="danger"
+                  class="delete-icon-btn"
+                  (click)="delete(q.id)">
+                  <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-button>
+              </ion-item>
+            }
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    } @else {
+      <div class="empty-state">
+        <ion-icon name="document-text-outline" class="empty-icon"></ion-icon>
+        <p class="empty-text">Aún no hay citas. ¡Agrega la primera!</p>
+      </div>
+    }
+
+  </div>
+</ion-content>

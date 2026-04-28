@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
+import { HomePage } from './home/home.page';
+import { QuotesPage } from './quotes/quotes.page';
+import { SettingsPage } from './settings/settings.page';
 
 export const routes: Routes = [
-  {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
+  { path: '', component: HomePage },
+  { path: 'quotes', component: QuotesPage },
+  { path: 'settings', component: SettingsPage },
 ];

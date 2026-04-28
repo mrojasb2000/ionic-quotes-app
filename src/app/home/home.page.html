@@ -1,20 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header translucent="true">
+  <ion-toolbar class="home-toolbar">
+    <div class="home-toolbar-inner">
+      <div class="home-brand">Cita del dia</div>
+
+      <nav class="home-nav" aria-label="Navegacion principal">
+        <a
+          class="home-nav-link"
+          routerLink="/"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Inicio
+        </a>
+        <a
+          class="home-nav-link"
+          routerLink="/quotes"
+          routerLinkActive="is-active">
+          Citas
+        </a>
+        <a
+          class="home-nav-link"
+          routerLink="/settings"
+          routerLinkActive="is-active">
+          Configuracion
+        </a>
+      </nav>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+@if (quote) {
+  <ion-content class="quote-content">
+    <div class="quote-wrapper">
+      <ion-card class="quote-card">
+        <ion-card-content>
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text">{{quote.text}}</p>
+          <div class="quote-mark quote-mark--close">&rdquo;</div>
+          <div class="quote-divider"></div>
+          <p class="quote-author">Autor: {{quote.author}}</p>
+        </ion-card-content>
+      </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+      @if (allowDelete) {
+        <ion-button
+          class="delete-btn"
+          color="danger"
+          fill="outline"
+          expand="block"
+          (click)="delete()">
+          Eliminar cita
+        </ion-button>
+      }
+    </div>
+  </ion-content>
+} @else {
+  <ion-content class="quote-content">
+    <div class="empty-state">
+      <ion-icon name="chatbubble-ellipses-outline" class="empty-icon"></ion-icon>
+      <p class="empty-text">No hay citas disponibles</p>
+    </div>
+  </ion-content>
+}
